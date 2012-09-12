@@ -17,10 +17,13 @@ import org.hibernate.Session;
 import SNIICT.utils.Hibernatable;
 import SNIICT.models.CategoriaEquipo;
 
+// SIF.PS_ICT_EQUILAB_TBL
 @Entity
-@Table(name="SIF.PS_ICT_EQUILAB_TBL")
+@Table(name="PS_ICT_EQUILAB_TBL")
 public class EquipoLaboratorio {
 
+	public static String tableName="PS_ICT_EQUILAB_TBL";
+	
 	@Id
 	@Column(name="ICT_ID_EQUIPO_FLD")
 	private Integer equipoId;
