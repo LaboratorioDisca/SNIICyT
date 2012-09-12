@@ -12,9 +12,16 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import SNIICT.utils.Hibernatable;
 
+// SIF.PS_ICT_CONLAB_VW
 @Entity
-@Table(name="SIF.PS_ICT_CONLAB_VW")
+@Table(name="PS_ICT_CONLAB_VW")
 public class DescripcionLaboratorio {
+	
+	public static String tableName="PS_ICT_CONLAB_VW";
+	
+	@Id
+	@Column(name="ICT_NOM_LABOR_FLD")
+	private String nombreLaboratorio;
 	
 	@Column(name="ICT_ID_LABOR_FLD")
 	private Integer laboratorioId;
@@ -55,10 +62,6 @@ public class DescripcionLaboratorio {
 	@Column(name="ICT_DESCR_DISC_FLD")
 	private String descripcionDisciplina;
 	
-	@Id
-	@Column(name="ICT_NOM_LABOR_FLD")
-	private String nombreLaboratorio;
-	
 	@Column(name="ICT_CVESDICIP_FLD")
 	private String subdisciplinaId;
 	
@@ -72,7 +75,7 @@ public class DescripcionLaboratorio {
         Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		String mainQuery = "SELECT * FROM SIF.PS_ICT_CONLAB_VW ";
+		String mainQuery = "SELECT * FROM "+tableName+" ";
 
 		String entidadQ = "ICT_ENT_FED_FLD = :entidadId ";
 		String sectorQ = "ICT_ID_SECTOR_FLD = :sectorId ";

@@ -6,7 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SIF.PS_CYT_SECTOR_INEG")
+// @ Conacyt : 'SIF.PS_CYT_SECTOR_INEG'
+@Table(name="PS_CYT_SECTOR_INEG")
 public class Sector {
 	@Id
 	@Column(name="CYT_SECTOR_ID")
