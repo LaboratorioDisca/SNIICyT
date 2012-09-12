@@ -166,7 +166,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
         if(!dependencia.isEmpty())
         	queryParcial+= queryDependencia;
         
-        SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_CONLAB_VW WHERE " + queryParcial);
+        SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM "+DescripcionLaboratorio.tableName+" WHERE " + queryParcial);
 		queryFicha.addEntity(DescripcionLaboratorio.class);
 		queryFicha.setString("laboratorioId", laboratorioId);
 		queryFicha.setString("sectorId", sectorId);

@@ -8,10 +8,10 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-        <property name="connection.url">jdbc:oracle:thin:@192.168.51.14:1534:xe</property>
+        <property name="connection.url">jdbc:oracle:thin:@192.168.51.14:1521:xe</property>
         
         <!-- DB Access credential -->
-        <property name="connection.username">RODRIGO</property>
+        <property name="connection.username">rodrigo</property>
         <property name="connection.password">iimas</property>
 		 
         <!-- PostgreSQL

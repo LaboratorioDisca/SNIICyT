@@ -142,7 +142,7 @@ public class BusquedaAction extends PartialAwareAction implements ParameterAware
 		String sectorId = this.getParameters().get("sector")[0];
 		setInstituciones(new ArrayList<Institucion>());
 	
-		String query = "SELECT * FROM SIF.PS_ICT_BUS_INST_VW WHERE ICT_ID_SECTOR_FLD = :sectorId ORDER BY ICT_DESC_INST_FLD ASC";
+		String query = "SELECT * FROM RODRIGO.PS_ICT_BUS_INST_VW WHERE ICT_ID_SECTOR_FLD = :sectorId ORDER BY ICT_DESC_INST_FLD ASC";
 		execute(query, Institucion.class, "sectorId", sectorId, instituciones);
 		
 		return SUCCESS+"-inst";
@@ -153,7 +153,7 @@ public class BusquedaAction extends PartialAwareAction implements ParameterAware
 		String institucionId = this.getParameters().get("institucion")[0];
 		setDependencias(new ArrayList<Dependencia>());
 		
-		String query = "SELECT * FROM SIF.PS_ICT_BUS_DEPE_VW WHERE ICT_ID_INSTITU_FLD = :instId ORDER BY ICT_DESC_DEPEN_FLD ASC";
+		String query = "SELECT * FROM RODRIGO.PS_ICT_BUS_DEPE_VW WHERE ICT_ID_INSTITU_FLD = :instId ORDER BY ICT_DESC_DEPEN_FLD ASC";
 		execute(query, Dependencia.class, "instId", institucionId, dependencias);
 		
 		return SUCCESS+"-depen";
@@ -164,7 +164,7 @@ public class BusquedaAction extends PartialAwareAction implements ParameterAware
 		String dependenciaId = this.getParameters().get("dependencia")[0];
 		setSubdependencias(new ArrayList<Subdependencia>());
 		
-		String query = "SELECT * FROM SIF.PS_ICT_BUS_SECT_VW WHERE ICT_CVE_DEPEN_FLD = :depenId ORDER BY ICT_CVE_SECTOR_FLD ASC";
+		String query = "SELECT * FROM RODRIGO.PS_ICT_BUS_SECT_VW WHERE ICT_CVE_DEPEN_FLD = :depenId ORDER BY ICT_CVE_SECTOR_FLD ASC";
 		execute(query, Subdependencia.class, "depenId", dependenciaId, subdependencias);
 		
 		return SUCCESS+"-subdepen";
