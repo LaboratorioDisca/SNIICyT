@@ -13,12 +13,15 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import SNIICT.utils.Hibernatable;
 
+// SIF.PS_ICT_CONEQ_VW
 @Entity
-@Table(name="SIF.PS_ICT_CONEQ_VW")
+@Table(name="PS_ICT_CONEQ_VW")
 public class DescripcionEquipo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	public static String tableName="PS_ICT_CONEQ_VW";
+	
 	@Column(name="ICT_ID_LABOR_FLD") 
 	private Integer laboratorioId;
 	
@@ -82,7 +85,7 @@ public class DescripcionEquipo implements Serializable {
         Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		String mainQuery = "SELECT * FROM SIF.PS_ICT_CONEQ_VW ";
+		String mainQuery = "SELECT * FROM "+tableName+" ";
 
 		String equipoNombreQ = "ICT_DESC_FLD LIKE upper('%"+parametros.get("equipoNombre")+"%')";
 		String entidadQ = "ICT_ENT_FED_FLD = :entidadId ";

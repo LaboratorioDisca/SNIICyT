@@ -82,7 +82,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_CONEQ_VW WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM "+ DescripcionEquipo.tableName +" WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFicha.addEntity(DescripcionEquipo.class);
 		queryFicha.setString("equipoId", equipoId);
 		
