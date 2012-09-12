@@ -34,6 +34,7 @@ import SNIICT.models.DatoGeneral;
 import SNIICT.models.DescripcionLaboratorio;
 import SNIICT.models.DescripcionEquipo;
 import SNIICT.models.EquipoLaboratorio;
+import SNIICT.models.LineasLaboratorio;
 
 /*
  * El conjunto de acciones definidas en este controlador se encarga de desplegar
@@ -51,6 +52,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 
 	private DescripcionLaboratorio fichaTecnicaLaboratorio;
 	private List<EquipoLaboratorio> equiposLaboratorio;
+	private List<LineasLaboratorio> lineasLaboratorio;
 	private List<Acreditacion> acreditaciones;
 	
 	private DescripcionEquipo fichaTecnicaEquipo;
@@ -62,6 +64,9 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	
 	private HttpServletResponse response;
 	private Map<String, String[]> parameters;
+	
+	private String tableSpaceSif = "RODRIGO.";
+	private String tableSpaceSystem = "SYSTEM.";
 
 	public Map<String, String[]> getParameters() {
 		return this.parameters;
@@ -82,7 +87,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_CONEQ_VW WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_CONEQ_VW WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFicha.addEntity(DescripcionEquipo.class);
 		queryFicha.setString("equipoId", equipoId);
 		
@@ -93,7 +98,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 			return NONE;
 		
 		fichaTecnicaEquipo = (DescripcionEquipo) fichas.get(0);
-		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_EQUILAB_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_EQUILAB_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
 		queryFichaEquipo.setString("equipoId", equipoId);
 		
@@ -161,7 +166,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
         if(!dependencia.isEmpty())
         	queryParcial+= queryDependencia;
         
-        SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_CONLAB_VW WHERE " + queryParcial);
+        SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_CONLAB_VW WHERE " + queryParcial);
 		queryFicha.addEntity(DescripcionLaboratorio.class);
 		queryFicha.setString("laboratorioId", laboratorioId);
 		queryFicha.setString("sectorId", sectorId);
@@ -188,7 +193,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		if(!fichas.isEmpty())
 			this.setFichaTecnicaLaboratorio(fichas.get(0));
 		
-		SQLQuery queryDatoGeneral = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_DATGRAL_TBL WHERE " + queryParcial);
+		SQLQuery queryDatoGeneral = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_DATGRAL_TBL WHERE " + queryParcial);
 		queryDatoGeneral.addEntity(DatoGeneral.class);
 		queryDatoGeneral.setString("laboratorioId", laboratorioId);
 		queryDatoGeneral.setString("sectorId", sectorId);
@@ -212,7 +217,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 			setDatoGeneral(datosGrales.get(0));
 		
 		
-		SQLQuery queryActividades = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_ACTIVID_TBL WHERE "+ obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		SQLQuery queryActividades = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_ACTIVID_TBL WHERE "+ obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
 		queryActividades.addEntity(Actividad.class);
 		queryActividades.setString("laboratorioId", laboratorioId);
 		queryActividades.setString("sectorId", sectorId);
@@ -226,7 +231,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		if(!actividades.isEmpty())
 			setActividad(actividades.get(0));
 		
-		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_EQUILAB_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_EQUILAB_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
 		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
 		queryFichaEquipo.setString("laboratorioId", laboratorioId);
 		queryFichaEquipo.setString("sectorId", sectorId);
@@ -236,7 +241,17 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		
 		equiposLaboratorio = queryFichaEquipo.list();
 		
-		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_ACRECER_TBL WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
+		SQLQuery queryLineaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
+		queryFichaEquipo.setString("laboratorioId", laboratorioId);
+		queryFichaEquipo.setString("sectorId", sectorId);
+		queryFichaEquipo.setString("institucionId", institucionId);
+		queryFichaEquipo.setString("claveSector", sectorClave);
+		queryFichaEquipo.setString("claveDependencia", dependencia);
+		
+		lineasLaboratorio = queryLineaEquipo.list();
+		
+		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_ACRECER_TBL WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
 		queryAcreditacion.addEntity(Acreditacion.class);
 		queryAcreditacion.setString("laboratorioId", laboratorioId);
 		queryAcreditacion.setString("institucionId", institucionId);
@@ -858,6 +873,14 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	
 	public List<EquipoLaboratorio> getEquiposLaboratorio() {
 		return this.equiposLaboratorio;
+	}
+
+	public List<LineasLaboratorio> getLineasLaboratorio() {
+		return lineasLaboratorio;
+	}
+
+	public void setLineasLaboratorio(List<LineasLaboratorio> lineasLaboratorio) {
+		this.lineasLaboratorio = lineasLaboratorio;
 	}
 
 	public void setServletResponse(HttpServletResponse response) {

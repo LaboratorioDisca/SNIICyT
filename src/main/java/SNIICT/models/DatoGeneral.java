@@ -43,6 +43,12 @@ public class DatoGeneral {
 	@Column(name="ICT_ENT_FED_FLD")
 	private String estado;
 	
+	@Column(name="ICT_LATITUD_FLD")
+	private Double latitud;
+	
+	@Column(name="ICT_LONGITUD_FLD")
+	private Double longitud;
+	
 	public String getPaginaWeb() {
 		return paginaWeb;
 	}
@@ -129,5 +135,21 @@ public class DatoGeneral {
 
 	public void setlaboratorioId(Integer laboratorioId) {
 		this.laboratorioId = laboratorioId;
+	}
+
+	public Double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(Double latitud) {
+		this.latitud = latitud;
+	}
+
+	public Double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(Double longitud) {
+		this.longitud = longitud;
 	}
 }

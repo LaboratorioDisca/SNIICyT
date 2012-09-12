@@ -133,6 +133,14 @@
           <tr>
           </tr>
           <tr>
+            <td class="left"><span class="pregunta1">Latitud:<br></span></td>
+            <td><span class="respuesta"><s:property value="datoGeneral.latitud" /><br></span></td>
+          </tr>
+          <tr>
+            <td class="left"><span class="pregunta1">Longitud:<br></span></td>
+            <td><span class="respuesta"><s:property value="datoGeneral.longitud" /><br></span></td>
+          </tr>
+          <tr>
             <td class="left"><span class="pregunta1">Página Web:<br></span></td>
             <td><span class="respuesta"><s:property value="datoGeneral.paginaWeb" /><br></span></td>
           </tr>
@@ -190,21 +198,16 @@
 	  		<p><s:property value="actividad.capacidadesHabilidades" /></p>
 	  	</div>
 	  	
-	  	<div class="recuadro">
-	  		<p class="left">Línea de investigación 1</p>
-	  		<p><s:property value="actividad.lineaInvUno" /></p>
-	  	</div>
-	  	
-	  	<div class="recuadro">
-	  		<p class="left">Línea de investigación 2</p>
-	  		<p><s:property value="actividad.lineaInvDos" /></p>
-	  	</div>
-	  	
-	  	<div class="recuadro">
-	  		<p class="left">Línea de investigación 3</p>
-	  		<p><s:property value="actividad.lineaInvTres" /></p>
-	  	</div>
-	  	
+	  	<table>
+	  	  <s:iterator value="equiposLaboratorio">
+			<tr class="centered-text">
+	            <td>
+	            	<span class="respuesta"><s:property value="categoriaEquipo.lineaInvestigacion" /></span>
+	            </td>
+          	</tr>
+		  </s:iterator>
+	  	</table>
+	  		  	
 	  	<div class="division"></div>
 	  	
 	  	<table>
