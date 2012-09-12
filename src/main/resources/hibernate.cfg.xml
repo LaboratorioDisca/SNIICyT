@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@172.16.6.74:1534:SIFGSAQA</property>
+        
+        <!-- DB Access credential -->
+        <property name="connection.username">sif</property>
+        <property name="connection.password">.s1fQA74</property>
+		 
+        <!-- PostgreSQL
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost/sniict_development</property>
+        
+		<property name="connection.username">postgres</property>
+        <property name="connection.password"></property>
+        -->
+        
+        
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- Oracle SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.Oracle9iDialect</property>
+		
+		
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+    	<mapping class="SNIICT.models.AreaConocimiento"/>
+    	<mapping class="SNIICT.models.Entidad"/>
+    	<mapping class="SNIICT.models.Disciplina"/>
+    	<mapping class="SNIICT.models.Subdisciplina"/>
+    	<mapping class="SNIICT.models.Sector"/>
+    	<mapping class="SNIICT.models.Institucion"/>
+    	<mapping class="SNIICT.models.Dependencia"/>
+    	<mapping class="SNIICT.models.Subdependencia"/>
+    	<mapping class="SNIICT.models.DescripcionLaboratorio"/>
+    	<mapping class="SNIICT.models.DescripcionEquipo"/>
+		<mapping class="SNIICT.models.DatoGeneral"/>		
+		<mapping class="SNIICT.models.Actividad"/>	
+		<mapping class="SNIICT.models.EquipoLaboratorio"/>
+    	<mapping class="SNIICT.models.CategoriaEquipo"/>
+    	<mapping class="SNIICT.models.Acreditacion"/>
+    	<mapping class="SNIICT.models.Capacidad"/>
+    	
+    </session-factory>
+
+</hibernate-configuration>

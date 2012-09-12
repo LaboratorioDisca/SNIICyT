@@ -1,0 +1,309 @@
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hidden {
+	display: none;
+}
+
+#tDatosMuestreo_wrapper {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+#wrapper {
+	width: 100%;
+	margin: 70px auto 30px auto;
+    height: auto;
+}
+
+.application-name {
+	margin-top: 5px;
+	width: 1100px;
+	height: 40px;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+.application-name h1, .application-name p {
+	margin: 0px;
+	padding: 0px;
+	text-transform: uppercase;
+}
+
+.application-name h1 {
+	font-family: Impact, Arial, Helvetica, sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+/* Page */
+
+#page {	
+	margin-top: 0;
+	min-height: 100%;
+	position: relative;
+	width: 1200px !important;
+	padding: 0px 0px 0px 0px;
+	background-color: white;
+	display: block;
+}
+
+/* Content */
+
+.content {
+	padding: 20px 50px;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Logo */
+
+#logo-fed {
+	background: url('../images/logo.jpg');
+	width: 886px;
+	height: 148px;
+}
+
+/* Footer */
+
+#page, #footer {
+	border-left: 4px solid #E0DBD1;
+	border-right: 4px solid #E0DBD1;
+}
+
+#footer {
+	height: 50px;
+	width: 1200px !important;
+	font-family: Arial, Helvetica, sans-serif;
+	border-bottom: 3px solid #E0DBD1;
+}
+
+#footer p {
+	padding-top: 20px;
+	line-height: normal;
+	font-size: 10px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #A19D9A;
+}
+
+#footer a {
+	color: #A19D9A;
+}
+
+form div.campo {
+	padding: 5px 0px 5px 0px;
+	width: 100%;
+	height: 30px;
+}
+
+html, body {
+	background: #F5F5F5  repeat-x left top; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #A19D9A;
+}
+
+h1, h2, h3, h4 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #3E3530;
+}
+
+h1 {	
+	text-align: center; 
+	font: arial black;
+}
+
+h2 {
+	font-size: 2.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+a {
+	text-decoration: none;
+	color: #339CCB;
+}
+
+a:hover {
+}
+
+/* Search */
+
+#search h3 {
+	font-size: 25px;
+}
+
+#search, #search-results, #details {
+	width: 800px;
+	height: 60px;
+	padding: 20px 0px 0px 0px;
+}
+
+#search form {
+	height: 41px;
+	margin: 0;
+	padding: 10px 0 0 0px;
+	font-size: 14px;
+}
+
+#search form .text input {
+	font-size: 15px;
+	width: 600px;
+}
+	
+#search form .field {	
+	margin: 10px 0 10px 0;
+}
+
+#search form .field label {
+	margin-bottom: 5px;
+	font-weight: bold;
+	display: block;
+}
+
+#search-text {
+	width: 170px;
+	padding: 6px 5px 2px 5px;
+	border: 1px solid #DEDEDE;
+	background: #FFFFFF;
+	text-transform: lowercase;
+	font: normal 11px Arial, Helvetica, sans-serif;
+	color: #5D781D;
+}
+
+#search-submit {
+	width: 50px;
+	height: 22px;
+	border: none;
+	background: #B9B9B9;
+	color: #000000;
+}
+
+/* Table Styling */
+
+.card {
+	width: 90%;
+	max-width: 90%;
+	margin: 10px;
+	border: 1px solid #D7D7D7;
+	color: #575757;
+	font-size: 12px;
+}
+
+.card td, .card tr {
+	text-align: left;
+}
+
+.titulo2 {
+	width: 300px;
+	font-weight: bold;
+	padding: 5px 0px 5px 20px;
+}
+
+.left, .left-simple, .left-larga, .resaltado {
+	color: #753599;
+	font-weight: bold;
+}
+
+.left {
+	width: 180px;
+	padding-left: 10px;
+}
+
+.left-simple {
+	width: 200px;
+	padding-right: 30px;
+}
+
+.left-larga {
+	width: 500px;
+	padding-right: 30px;
+}
+
+.table-head, .head {
+	background-color:#3C3B54;
+	color: white;
+}
+
+.head {
+	margin: 2px;
+	width: 96.7%;
+	min-width: 96.7%;
+}
+
+.recuadro {
+	margin: 10px;	
+}
+
+.division {
+	background-color: #D7D7D7;
+	height: 1px;
+}
+
+tr.centered-text *, .centered-text {
+	text-align: center;
+}
+
+.vertical tr th {
+	color: #753599;
+	font-weight: bold;
+}
+
+select {
+	font-size: 11px;
+}
+
+.cambiar-busqueda {
+	font-size: 18px;
+}
+
+.respuesta {
+	text-align: justify;
+	width: 400px;
+	max-width: 600px;
+}
+
+.column-selection {
+	width: 900px;
+}
+
+#tDatosMuestreo_wrapper {
+	width: 1000px !important;
+}
+
+#tDatosMuestreo_paginate {
+	width: 320px !important;
+}
+
+.paginate_button {
+	padding: 5px !important;
+	cursor: pointer !important;
+}
+
+.paginate_button:hover {
+	font-weight: bold;
+}
+
+#tDatosMuestreo_info, #tDatosMuestreo_paginate {
+	margin-top: 10px !important;
+}
