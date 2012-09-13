@@ -41,7 +41,8 @@ public class EquipoLaboratorio {
 		Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		SQLQuery queryCat = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_CAT_EQU_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		// SIF.PS_ICT_CAT_EQU_TBL
+		SQLQuery queryCat = s.createSQLQuery("SELECT * FROM PS_ICT_CAT_EQU_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryCat.addEntity(CategoriaEquipo.class);
 		queryCat.setString("equipoId", String.valueOf(equipoId));
 		

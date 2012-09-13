@@ -23,19 +23,20 @@
 	<div id="wrapper">
 		<div id="header">
 			<div id="logo-fed" class="centered"></div>
-			<div class="application-name centered">
-				<h1><s:text name="sistema.titulo_abrev"/></h1>
-			</div>
+		</div>
+		<div class="decoration"></div>
+		<div class="application-name centered">
+			<h1><s:text name="sistema.titulo_abrev"/></h1>
 		</div>
 		
 		<div id="page" class="centered">
 			<s:include value="content/%{renderPartial}"/>
-		</div>
-		
-		<div class="clearfooter"></div>
-		<div id="footer" class="centered">
+			
+
+		</div>		
+		<div id="footer">
 			<p><s:text name="conacyt.ubicacion"/></p>
-		</div>	
+		</div>
 	</div>
 	
 </body>

@@ -93,7 +93,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 			return NONE;
 		
 		fichaTecnicaEquipo = (DescripcionEquipo) fichas.get(0);
-		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM SIF.PS_ICT_EQUILAB_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM "+ EquipoLaboratorio.tableName +" WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
 		queryFichaEquipo.setString("equipoId", equipoId);
 		
