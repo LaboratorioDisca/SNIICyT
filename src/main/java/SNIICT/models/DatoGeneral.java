@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//SIF.PS_ICT_DATGRAL_TBL
 @Entity
-@Table(name="SIF.PS_ICT_DATGRAL_TBL")
+@Table(name="PS_ICT_DATGRAL_TBL")
 public class DatoGeneral {
 	
+	public static String tableName="PS_ICT_DATGRAL_TBL";
 	@Id
 	@Column(name="ICT_ID_LABOR_FLD")
 	private Integer laboratorioId;

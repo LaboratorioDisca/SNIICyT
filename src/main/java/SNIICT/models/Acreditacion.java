@@ -13,7 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PS_ICT_ACRECER_TBL")
 public class Acreditacion implements Serializable {
-
+	
+	public static String tableName="PS_ICT_ACRECER_TBL";
+	
 	@Id
 	@Column(name="ICT_ACRED_CERT_FLD")
 	private String nombre;

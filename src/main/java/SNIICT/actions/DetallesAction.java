@@ -98,7 +98,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 			return NONE;
 		
 		fichaTecnicaEquipo = (DescripcionEquipo) fichas.get(0);
-		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_EQUILAB_TBL WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM "+ EquipoLaboratorio.tableName +" WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
 		queryFichaEquipo.setString("equipoId", equipoId);
 		
@@ -193,7 +193,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		if(!fichas.isEmpty())
 			this.setFichaTecnicaLaboratorio(fichas.get(0));
 		
-		SQLQuery queryDatoGeneral = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_DATGRAL_TBL WHERE " + queryParcial);
+		SQLQuery queryDatoGeneral = s.createSQLQuery("SELECT * FROM "+DatoGeneral.tableName+" WHERE " + queryParcial);
 		queryDatoGeneral.addEntity(DatoGeneral.class);
 		queryDatoGeneral.setString("laboratorioId", laboratorioId);
 		queryDatoGeneral.setString("sectorId", sectorId);
@@ -216,8 +216,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		if(!datosGrales.isEmpty())
 			setDatoGeneral(datosGrales.get(0));
 		
-		
-		SQLQuery queryActividades = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_ACTIVID_TBL WHERE "+ obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		SQLQuery queryActividades = s.createSQLQuery("SELECT * FROM "+ Actividad.tableName +" WHERE "+ obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
 		queryActividades.addEntity(Actividad.class);
 		queryActividades.setString("laboratorioId", laboratorioId);
 		queryActividades.setString("sectorId", sectorId);
@@ -231,7 +230,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		if(!actividades.isEmpty())
 			setActividad(actividades.get(0));
 		
-		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_EQUILAB_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		SQLQuery queryFichaEquipo = s.createSQLQuery("SELECT * FROM "+ EquipoLaboratorio.tableName +" WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
 		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
 		queryFichaEquipo.setString("laboratorioId", laboratorioId);
 		queryFichaEquipo.setString("sectorId", sectorId);
@@ -241,26 +240,20 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		
 		equiposLaboratorio = queryFichaEquipo.list();
 		
-		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
-		queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
+		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
 		" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
 		"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
-//		System.out.println("sql::SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
-//				" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
-//				"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
-//		System.out.println("laboratorioid: " + laboratorioId + " sectorId: " + sectorId + " institucionId: " + institucionId +
-//				" claveSector: " + sectorClave + " claveDep: " + dependencia);
+
 		queryLineaLaboratorio.addEntity(LineasLaboratorio.class);
 		//queryLineaLaboratorio.setString("laboratorioId", laboratorioId);
 		//queryLineaLaboratorio.setString("sectorId", sectorId);
 //		queryLineaLaboratorio.setString("institucionId", institucionId);
 //		queryLineaLaboratorio.setString("claveSector", sectorClave);
 //		queryLineaLaboratorio.setString("claveDependencia", dependencia);
-		System.out.println("sql: " + queryLineaLaboratorio.getQueryString());
 		
 		lineasLaboratorio = queryLineaLaboratorio.list();
 		
-		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_ACRECER_TBL WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
+		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM "+ Acreditacion.tableName +" WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
 		queryAcreditacion.addEntity(Acreditacion.class);
 		queryAcreditacion.setString("laboratorioId", laboratorioId);
 		queryAcreditacion.setString("institucionId", institucionId);

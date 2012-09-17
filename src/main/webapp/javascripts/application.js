@@ -10,14 +10,14 @@ $(document).ready(function() {
 
    $('#buscar_area').bind('change', function() {
 	   if($(this).val() == "00" || $(this).val() == "") {
-		   $('#page').height($('#page').height()-$('#dinDisc').height());
+		   //$('#page').height($('#page').height()-$('#dinDisc').height());
 		   $('#dinDisc').empty();
 	   } else {
 		   var parametros = { "area" : $('#buscar_area').val() }
 		   
 		   $.post('catalogoDisciplinas', parametros, function(data) {
 			   $('#dinDisc').html(data);
-			   $('#page').height($('#page').height()+$('#dinDisc').height());
+			   //$('#page').height($('#page').height()+$('#dinDisc').height());
 		   });
 	   }
    });
@@ -35,32 +35,32 @@ $(document).ready(function() {
 		   
 		   $.post('catalogoSubdisciplinas', parametros, function(data) {
 			   $('#subdisciplinasSel').html(data);
-			   $('#page').height($('#page').height()+$('#subdisciplinasSel').height());
+			   //$('#page').height($('#page').height()+$('#subdisciplinasSel').height());
 		   });
 	   }
    });
    $('#buscar_sector').live('change', function() {
 	   if($(this).val() == "00" || $(this).val() == "") {
-		   $('#page').height($('#page').height()-$('#dinInst').height());
+		   //$('#page').height($('#page').height()-$('#dinInst').height());
 		   $('#dinInst').empty();
 	   } else {
 		   var parametros = { "sector" : $('#buscar_sector').val() }
 		   $.post('catalogoInstituciones', parametros, function(data) {
 			   $('#dinInst').html(data);
-			   $('#page').height($('#page').height()+$('#dinInst').height());
+			   //$('#page').height($('#page').height()+$('#dinInst').height());
 		   });
 	   }
    });
    
    $('#institucion').live('change', function() {
 	   if($(this).val() == "00" || $(this).val() == "") {
-		   $('#page').height($('#page').height()-$('#dependSel').height());
+		   //$('#page').height($('#page').height()-$('#dependSel').height());
 		   $('#dependSel').empty();
 	   } else {
 		   var parametros = { "institucion" : $('#institucion').val() }
 		   $.post('catalogoDependencias', parametros, function(data) {
 			   $('#dependSel').html(data);
-			   $('#page').height($('#page').height()+$('#dependSel').height());
+			   //$('#page').height($('#page').height()+$('#dependSel').height());
 		   });
 	   }
 	   
@@ -68,13 +68,13 @@ $(document).ready(function() {
    
    $('#dependencia').live('change', function() {
 	   if($(this).val() == "00" || $(this).val() == "") {
-		   $('#page').height($('#page').height()-$('#subdependSel').height());
+		   //$('#page').height($('#page').height()-$('#subdependSel').height());
 		   $('#subdependSel').empty();
 	   } else {
 		   var parametros = { "dependencia" : $('#dependencia').val() }
 		   $.post('catalogoSubdependencias', parametros, function(data) {
 			   $('#subdependSel').html(data);
-			   $('#page').height($('#page').height()+$('#subdependSel').height());
+			   //$('#page').height($('#page').height()+$('#subdependSel').height());
 		   });
 	   }
    });
@@ -95,10 +95,6 @@ $(document).ready(function() {
 
    $(document).ready( function () {
 	 	 $('#tDatosMuestreo').dataTable( {
-/*            "bScrollInfinite": true,
-		    "bScrollCollapse": true,
-		    "sScrollY": "300px",
-			"bAutoWidth": true,*/
 	 		"fnInitComplete": function(oSettings, json) {
 	 		   var dataTableHeight = $('#tDatosMuestreo').height();
 	 		   var pageHeight = $('#page').height();
@@ -113,7 +109,6 @@ $(document).ready(function() {
 			"sDom": 'T<"clear">rtip',
 			"oTableTools": {
 				"sSwfPath": "media/copy_cvs_xls_pdf.swf",
-//		  	"aButtons": [ "csv", "pdf" ]
 		  	"aButtons": [ {
                         "sExtends": "csv",
                         "sFileName": "SNIICyT.csv"}
@@ -126,14 +121,6 @@ $(document).ready(function() {
 			}
 		 } );
 	 } );
-   
-   if($.estaPresente('.small')) {
-	   $('#page').height(520);
-   } else if($.estaPresente('.medium')) {
-	   $('#page').height(750);
-   } else if($.estaPresente('.big')) {
-	   $('#page').height(1850);
-   }
    
    $('#nombre-equipo-toggle').live('click', function() {
 	   $('.nombre-de-equipo-fld').removeClass('hidden');
