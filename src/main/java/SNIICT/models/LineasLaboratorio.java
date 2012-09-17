@@ -35,4 +35,12 @@ public class LineasLaboratorio {
 	public void setLineaId(Integer lineaId) {
 		this.lineaId = lineaId;
 	}
+	
+	public String getLinea() {
+		return this.linea;
+	}
+	
+	public void setLinea(String linea) {
+		this.linea = linea;
+	}
 }

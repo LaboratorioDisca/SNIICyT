@@ -197,20 +197,15 @@
 	  		<p class="left left-larga">Principales capacidades y habilidades</p>
 	  		<p><s:property value="actividad.capacidadesHabilidades" /></p>
 	  	</div>
-	  	<h1>hola</h1>
 	  	<table>
 	  	  <s:iterator value="lineasLaboratorio">
 			<tr class="centered-text">
 	            <td>
-	            	<span class="respuesta">2<s:property value="lineasLaboratorio.linea" /></span>
-	            </td>
-	            <td>
-	            	1
+	            	<span><s:property value="linea"/></span>
 	            </td>
           	</tr>
 		  </s:iterator>
 	  	</table>
-	  	<h1>mundo</h1>
 	  	<div class="division"></div>
 	  	
 	  	<table>
