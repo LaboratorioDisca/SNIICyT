@@ -114,10 +114,10 @@
             	</span>
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td class="left"><span class="pregunta1">Colonia:<br></span></td>
             <td><span class="respuesta"><s:property value="datoGeneral.colonia" /><br></span></td>
-          </tr>
+          </tr>  -->
           <tr>
             <td class="left"><span class="pregunta1">Municipio/Delegación:<br></span></td>
             <td><span class="respuesta"><s:property value="datoGeneral.ciudad" /><br></span></td>
@@ -197,17 +197,20 @@
 	  		<p class="left left-larga">Principales capacidades y habilidades</p>
 	  		<p><s:property value="actividad.capacidadesHabilidades" /></p>
 	  	</div>
-	  	
+	  	<h1>hola</h1>
 	  	<table>
-	  	  <s:iterator value="equiposLaboratorio">
+	  	  <s:iterator value="lineasLaboratorio">
 			<tr class="centered-text">
 	            <td>
-	            	<span class="respuesta"><s:property value="categoriaEquipo.lineaInvestigacion" /></span>
+	            	<span class="respuesta">2<s:property value="lineasLaboratorio.linea" /></span>
+	            </td>
+	            <td>
+	            	1
 	            </td>
           	</tr>
 		  </s:iterator>
 	  	</table>
-	  		  	
+	  	<h1>mundo</h1>
 	  	<div class="division"></div>
 	  	
 	  	<table>

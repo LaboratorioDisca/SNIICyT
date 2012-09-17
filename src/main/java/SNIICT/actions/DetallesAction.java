@@ -87,7 +87,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_CONEQ_VW WHERE ICT_ID_EQUIPO_FLD = :equipoId");
+		SQLQuery queryFicha = s.createSQLQuery("SELECT * FROM "+ DescripcionEquipo.tableName +" WHERE ICT_ID_EQUIPO_FLD = :equipoId");
 		queryFicha.addEntity(DescripcionEquipo.class);
 		queryFicha.setString("equipoId", equipoId);
 		
@@ -241,15 +241,24 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		
 		equiposLaboratorio = queryFichaEquipo.list();
 		
-		SQLQuery queryLineaEquipo = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
-		queryFichaEquipo.addEntity(EquipoLaboratorio.class);
-		queryFichaEquipo.setString("laboratorioId", laboratorioId);
-		queryFichaEquipo.setString("sectorId", sectorId);
-		queryFichaEquipo.setString("institucionId", institucionId);
-		queryFichaEquipo.setString("claveSector", sectorClave);
-		queryFichaEquipo.setString("claveDependencia", dependencia);
+		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
+		" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
+		"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
+//		System.out.println("sql::SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
+//				" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
+//				"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
+//		System.out.println("laboratorioid: " + laboratorioId + " sectorId: " + sectorId + " institucionId: " + institucionId +
+//				" claveSector: " + sectorClave + " claveDep: " + dependencia);
+		queryLineaLaboratorio.addEntity(LineasLaboratorio.class);
+		//queryLineaLaboratorio.setString("laboratorioId", laboratorioId);
+		//queryLineaLaboratorio.setString("sectorId", sectorId);
+//		queryLineaLaboratorio.setString("institucionId", institucionId);
+//		queryLineaLaboratorio.setString("claveSector", sectorClave);
+//		queryLineaLaboratorio.setString("claveDependencia", dependencia);
+		System.out.println("sql: " + queryLineaLaboratorio.getQueryString());
 		
-		lineasLaboratorio = queryLineaEquipo.list();
+		lineasLaboratorio = queryLineaLaboratorio.list();
 		
 		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_ACRECER_TBL WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
 		queryAcreditacion.addEntity(Acreditacion.class);
@@ -427,7 +436,11 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
         	table2.addCell(new Paragraph(new Chunk("Estado:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getEstado(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
         	table2.addCell(new Paragraph(new Chunk("Código Postal:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-        	table2.addCell(new Paragraph(new Chunk(datoGeneral.getCodigoPostal(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	 
+        	table2.addCell(new Paragraph(new Chunk(datoGeneral.getCodigoPostal(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	table2.addCell(new Paragraph(new Chunk("Latitud:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
+        	table2.addCell(new Paragraph(new Chunk(datoGeneral.getLatitud().toString(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	table2.addCell(new Paragraph(new Chunk("Longitud:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
+        	table2.addCell(new Paragraph(new Chunk(datoGeneral.getLongitud().toString(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
         	table2.addCell(new Paragraph(new Chunk("Página Web:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
             if(datoGeneral.getPaginaWeb() != null)
             	table2.addCell(new Paragraph(new Chunk(datoGeneral.getPaginaWeb(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	 
