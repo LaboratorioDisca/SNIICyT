@@ -28,6 +28,8 @@ public class LineasLaboratorio {
 	@Column(name="ICT_LINEA1_FLD")
 	private String linea;
 
+	public static String tableName = "SIF.PS_ICT_LIN_INV_TBL";
+	
 	public Integer getLineaId() {
 		return lineaId;
 	}

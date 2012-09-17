@@ -241,16 +241,20 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		equiposLaboratorio = queryFichaEquipo.list();
 		
 		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
-		" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
-		"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
-
-		queryLineaLaboratorio.addEntity(LineasLaboratorio.class);
-		//queryLineaLaboratorio.setString("laboratorioId", laboratorioId);
-		//queryLineaLaboratorio.setString("sectorId", sectorId);
-//		queryLineaLaboratorio.setString("institucionId", institucionId);
-//		queryLineaLaboratorio.setString("claveSector", sectorClave);
-//		queryLineaLaboratorio.setString("claveDependencia", dependencia);
+				" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
+				"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
 		
+		
+		queryLineaLaboratorio.addEntity(LineasLaboratorio.class);
+		// Descomentar el siguiente bloque de código para conacyt (y comentar el del query anterior)
+		/* 
+		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM "+ LineasLaboratorio.tableName +" WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		queryLineaLaboratorio.setString("laboratorioId", laboratorioId);
+		queryLineaLaboratorio.setString("sectorId", sectorId);
+		queryLineaLaboratorio.setString("institucionId", institucionId);
+		queryLineaLaboratorio.setString("claveSector", sectorClave);
+		queryLineaLaboratorio.setString("claveDependencia", dependencia);
+		*/
 		lineasLaboratorio = queryLineaLaboratorio.list();
 		
 		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM "+ Acreditacion.tableName +" WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");
@@ -441,7 +445,48 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
                 table2.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	
         	table2.setSpacingBefore(5);
          table2.setSpacingAfter(5);
-        	document.add(table2);       
+        	document.add(table2);  
+        	
+        	
+        // Inicia tabla de líneas de investigación
+        PdfPTable tableLineasInv = new PdfPTable(2);
+        tableLineasInv.setWidthPercentage(anchoTabla);
+        Paragraph tituloTabla3 = new Paragraph("");
+        tituloTabla3.add(new Chunk("L√≠neas de Investigaci√≥n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+        cell = new PdfPCell(tituloTabla3);	  	 	
+        cell.setColspan(3);
+        cell.setBackgroundColor(new BaseColor(60, 59, 84));       	
+        tableLineasInv.addCell(cell);
+        cell = new PdfPCell(new Paragraph(new Chunk("N√∫mero", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
+        cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        tableLineasInv.addCell(cell);
+        cell = new PdfPCell(new Paragraph(new Chunk("Descripci√≥n", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
+        cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        tableLineasInv.addCell(cell);
+        cell.setColspan(2);
+        Iterator lineasIterador = lineasLaboratorio.iterator();
+        
+        int i = 1;
+        while (lineasIterador.hasNext()){
+            LineasLaboratorio lineaLab = (LineasLaboratorio) lineasIterador.next();
+            
+            cell = new PdfPCell(new Paragraph(new Chunk("L√≠nea "+i, FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
+ 			cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+ 			tableLineasInv.addCell(cell);
+
+            cell = new PdfPCell(new Paragraph(new Chunk(lineaLab.getLinea(), FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
+ 			cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+ 			tableLineasInv.addCell(cell);
+ 			// actualiza indice para desplegar número de línea siguiente
+ 			i++;
+         }
+        
+        tableLineasInv.setSpacingBefore(5);
+        tableLineasInv.setSpacingAfter(5); 
+        document.add(tableLineasInv);
+        // Termina tabla de líneas de investigación	        	
+        
+        
  			//document.add(nuevalinea);        	 	
 /*	  	 	PdfPTable table3 = new PdfPTable(3);
 	  	 	table3.setWidthPercentage(anchoTabla);
