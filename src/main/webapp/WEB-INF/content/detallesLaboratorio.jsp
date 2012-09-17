@@ -193,19 +193,6 @@
 	  <div class="card centrado vertical">
 	  	<div class="titulo2 head">Actividades</div>
 	  	
-	  	<div class="recuadro">
-	  		<p class="left left-larga">Principales capacidades y habilidades</p>
-	  		<p><s:property value="actividad.capacidadesHabilidades" /></p>
-	  	</div>
-	  	<table>
-	  	  <s:iterator value="lineasLaboratorio">
-			<tr class="centered-text">
-	            <td>
-	            	<span><s:property value="linea"/></span>
-	            </td>
-          	</tr>
-		  </s:iterator>
-	  	</table>
 	  	<div class="division"></div>
 	  	
 	  	<table>
@@ -282,6 +269,24 @@
             </td>
           </tr>
           
+        </tbody>
+      </table>
+      
+      <table class="card centrado vertical">
+        <tbody>
+
+          <tr>
+            <td class="titulo2 table-head" colspan="4" rowspan="1">Líneas de Investigación<br></td>
+          </tr>
+          
+          <s:iterator status="stat" value="lineasLaboratorio">
+			<tr class="centered-text">
+				<td class="left"><span class="pregunta1">Linea <s:property value="#stat.index +1" />:<br></span></td>
+	            <td>
+	            	<span><s:property value="linea"/></span>
+	            </td>
+          	</tr>
+		  </s:iterator>
         </tbody>
       </table>
 	  
