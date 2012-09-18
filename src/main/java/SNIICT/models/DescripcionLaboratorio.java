@@ -257,6 +257,10 @@ public class DescripcionLaboratorio {
 		return this.nombreLaboratorio;
 	}
 	
+	public String getNombreLaboratorioDashed() {
+		return this.nombreLaboratorio.replaceAll(" ", "-");
+	}
+	
 	public void setNombreLaboratorio(String nombreLaboratorio) {
 		this.nombreLaboratorio= nombreLaboratorio;
 	}

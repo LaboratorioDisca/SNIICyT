@@ -52,7 +52,7 @@
 		<mapping class="SNIICT.models.DatoGeneral"/>		
 		<mapping class="SNIICT.models.Actividad"/>	
 		<mapping class="SNIICT.models.EquipoLaboratorio"/>
-    	<mapping class="SNIICT.models.LineasLaboratorio"/>
+    	<mapping class="SNIICT.models.LineaLaboratorio"/>
     	<mapping class="SNIICT.models.CategoriaEquipo"/>
     	<mapping class="SNIICT.models.Acreditacion"/>
     	<mapping class="SNIICT.models.Capacidad"/>

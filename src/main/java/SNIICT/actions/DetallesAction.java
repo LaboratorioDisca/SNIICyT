@@ -34,7 +34,7 @@ import SNIICT.models.DatoGeneral;
 import SNIICT.models.DescripcionLaboratorio;
 import SNIICT.models.DescripcionEquipo;
 import SNIICT.models.EquipoLaboratorio;
-import SNIICT.models.LineasLaboratorio;
+import SNIICT.models.LineaLaboratorio;
 
 /*
  * El conjunto de acciones definidas en este controlador se encarga de desplegar
@@ -52,7 +52,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 
 	private DescripcionLaboratorio fichaTecnicaLaboratorio;
 	private List<EquipoLaboratorio> equiposLaboratorio;
-	private List<LineasLaboratorio> lineasLaboratorio;
+	private List<LineaLaboratorio> lineasLaboratorio;
 	private List<Acreditacion> acreditaciones;
 	
 	private DescripcionEquipo fichaTecnicaEquipo;
@@ -245,7 +245,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 				"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
 		
 		
-		queryLineaLaboratorio.addEntity(LineasLaboratorio.class);
+		queryLineaLaboratorio.addEntity(LineaLaboratorio.class);
 		// Descomentar el siguiente bloque de c—digo para conacyt (y comentar el del query anterior)
 		/* 
 		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM "+ LineasLaboratorio.tableName +" WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
@@ -350,7 +350,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	    try{
 	    	response.setContentType("application/pdf");
 	    	response.setHeader("Content-Disposition",
-	    			"attachment;filename=Detalles del laboratorio.pdf");
+	    			"attachment;filename=Laboratorio-"+fichaTecnicaLaboratorio.getNombreLaboratorioDashed()+".pdf");
 	    	
 	    	PdfWriter.getInstance(document, response.getOutputStream());
 	    	document.addAuthor("SNIICyT CONACYT");
@@ -458,7 +458,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
         
         	int i = 1;
         	while (lineasIterador.hasNext()){
-        		LineasLaboratorio lineaLab = (LineasLaboratorio) lineasIterador.next();
+        		LineaLaboratorio lineaLab = (LineaLaboratorio) lineasIterador.next();
             
         		cell = new PdfPCell(new Paragraph(new Chunk("LÃ­nea "+i, FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
         		cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
@@ -916,11 +916,11 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		return this.equiposLaboratorio;
 	}
 
-	public List<LineasLaboratorio> getLineasLaboratorio() {
+	public List<LineaLaboratorio> getLineasLaboratorio() {
 		return lineasLaboratorio;
 	}
 
-	public void setLineasLaboratorio(List<LineasLaboratorio> lineasLaboratorio) {
+	public void setLineasLaboratorio(List<LineaLaboratorio> lineasLaboratorio) {
 		this.lineasLaboratorio = lineasLaboratorio;
 	}
 
