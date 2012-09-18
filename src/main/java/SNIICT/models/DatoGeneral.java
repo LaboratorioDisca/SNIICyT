@@ -52,7 +52,10 @@ public class DatoGeneral {
 	private Double longitud;
 	
 	public String getPaginaWeb() {
-		return paginaWeb;
+		if(paginaWeb == null)
+			return "---";
+		else
+			return paginaWeb;
 	}
 
 	public void setPaginaWeb(String paginaWeb) {
@@ -140,7 +143,10 @@ public class DatoGeneral {
 	}
 
 	public Double getLatitud() {
-		return latitud;
+		if(latitud == null)
+			return 0.0;
+		else
+			return latitud;
 	}
 
 	public void setLatitud(Double latitud) {
@@ -148,7 +154,10 @@ public class DatoGeneral {
 	}
 
 	public Double getLongitud() {
-		return longitud;
+		if(longitud == null)
+			return 0.0;
+		else
+			return longitud;
 	}
 
 	public void setLongitud(Double longitud) {

@@ -147,7 +147,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 	
 	public String getNombreLaboratorio() {
-		return nombreLaboratorio;
+		if(nombreLaboratorio == null)
+			return "---";
+		else
+			return nombreLaboratorio;
 	}
 
 	public void setNombreLaboratorio(String nombreLaboratorio) {
@@ -171,7 +174,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 
 	public String getDescripcionInstitucion() {
-		return descripcionInstitucion;
+		if(descripcionInstitucion == null)
+			return "---";
+		else
+			return descripcionInstitucion;
 	}
 
 	public void setDescripcionInstitucion(String descripcionInstitucion) {
@@ -179,7 +185,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 
 	public String getDescripcionDependencia() {
-		return descripcionDependencia;
+		if(descripcionInstitucion == null)
+			return "---";
+		else
+			return descripcionDependencia;
 	}
 
 	public void setDescripcionDependencia(String descripcionDependencia) {
@@ -187,7 +196,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 
 	public String getDescripcionSector() {
-		return descripcionSector;
+		if(descripcionSector == null)
+			return "---";
+		else
+			return descripcionSector;
 	}
 
 	public void setDescripcionSector(String descripcionSector) {
@@ -219,7 +231,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 
 	public String getDescripcionDisciplina() {
-		return descripcionDisciplina;
+		if(descripcionDisciplina == null)
+			return "---";
+		else
+			return descripcionDisciplina;
 	}
 
 	public void setDescripcionDisciplina(String descripcionDisciplina) {
@@ -251,7 +266,10 @@ public class DescripcionEquipo implements Serializable {
 	}
 
 	public String getDescripcionSubdisciplina() {
-		return descripcionSubdisciplina;
+		if(this.descripcionSubdisciplina == null)
+			return "---";
+		else
+			return descripcionSubdisciplina;
 	}
 
 	public void setDescripcionSubdisciplina(String descripcionSubdisciplina) {

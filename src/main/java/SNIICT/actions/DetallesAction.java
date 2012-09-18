@@ -296,49 +296,41 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	    	response.setHeader("Content-Disposition",
 	    			"attachment;filename=Detalles del laboratorio.pdf");
 	   	 	
-	      PdfWriter.getInstance(document, response.getOutputStream());
-	      document.addAuthor("SNIICyT CONACYT");
-	      document.addCreator("SNIICyT CONACYT");
-	      document.open();
+	    	PdfWriter.getInstance(document, response.getOutputStream());
+	    	document.addAuthor("SNIICyT CONACYT");
+	      	document.addCreator("SNIICyT CONACYT");
+	      	document.open();
 	      
-	      this.addLogoToDocument(document);
+	      	this.addLogoToDocument(document);
 
 
 			Paragraph titulo = new Paragraph(" ");
 			titulo.add(new Chunk("SNIICyT", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(60, 59, 84))));
 			titulo.setAlignment(Element.ALIGN_CENTER);
  			document.add(titulo);	      
-	      document.add(new Paragraph(" "));
+ 			document.add(new Paragraph(" "));
 	      
 			PdfPTable table = new PdfPTable(2);
 			table.setWidthPercentage(anchoTabla);
 			table.setWidths(new int[]{1, 5});
-         PdfPCell cell;   
-      	Paragraph tituloTabla1 = new Paragraph("");      	
-      	tituloTabla1.add(new Chunk("Datos generales de la organizaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
-         cell = new PdfPCell(tituloTabla1);
-         cell.setColspan(2);
-         cell.setBackgroundColor(new BaseColor(60, 59, 84));
-         table.addCell(cell);
-         table.addCell(new Paragraph(new Chunk("Nombre:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionInstitucion() != null) 
-            table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionInstitucion(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-        else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-       	table.addCell(new Paragraph(new Chunk("2do Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionDependencia() != null)
-        	table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionDependencia(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         table.addCell(new Paragraph(new Chunk("3er Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionSector() != null) 
-            table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionSector(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));  
-         else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         table.setSpacingBefore(5);
-         table.setSpacingAfter(5);
-    	   document.add(table);
-
+			PdfPCell cell;   
+			Paragraph tituloTabla1 = new Paragraph("");      	
+			tituloTabla1.add(new Chunk("Datos generales de la organizaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+			cell = new PdfPCell(tituloTabla1);
+			cell.setColspan(2);
+			cell.setBackgroundColor(new BaseColor(60, 59, 84));
+			table.addCell(cell);
+        
+			table.addCell(new Paragraph(new Chunk("Nombre:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
+			table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionInstitucion(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+			table.addCell(new Paragraph(new Chunk("2do Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
+			table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionDependencia(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        
+			table.addCell(new Paragraph(new Chunk("3er Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
+			table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionSector(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));  
+			table.setSpacingBefore(5);
+			table.setSpacingAfter(5);
+			document.add(table);
         }catch(Exception e){
 	        e.printStackTrace();
 	    }
@@ -359,132 +351,130 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	    	response.setContentType("application/pdf");
 	    	response.setHeader("Content-Disposition",
 	    			"attachment;filename=Detalles del laboratorio.pdf");
-	   	 	
-	      PdfWriter.getInstance(document, response.getOutputStream());
-	      document.addAuthor("SNIICyT CONACYT");
-	      document.addCreator("SNIICyT CONACYT");
-	      document.open();
+	    	
+	    	PdfWriter.getInstance(document, response.getOutputStream());
+	    	document.addAuthor("SNIICyT CONACYT");
+	    	document.addCreator("SNIICyT CONACYT");
+	    	document.open();
 
-	      this.addLogoToDocument(document);
+	    	this.addLogoToDocument(document);
 
 			Paragraph titulo = new Paragraph(" ");
 			titulo.add(new Chunk("SNIICyT", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(60, 59, 84))));
 			titulo.setAlignment(Element.ALIGN_CENTER);
  			document.add(titulo);	      
-	      document.add(new Paragraph(" "));
+ 			document.add(new Paragraph(" "));
 	      
 			PdfPTable table = new PdfPTable(2);
 			table.setWidthPercentage(anchoTabla);
 			table.setWidths(new int[]{1, 5});
-         PdfPCell cell;   
-      	Paragraph tituloTabla1 = new Paragraph("");      	
-      	tituloTabla1.add(new Chunk("Datos generales de la organizaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
-         cell = new PdfPCell(tituloTabla1);
-         cell.setColspan(2);
-         cell.setBackgroundColor(new BaseColor(60, 59, 84));
-         table.addCell(cell);
-         table.addCell(new Paragraph(new Chunk("Nombre:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionInstitucion() != null) 
+			PdfPCell cell;   
+			Paragraph tituloTabla1 = new Paragraph("");      	
+			tituloTabla1.add(new Chunk("Datos generales de la organizaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+			cell = new PdfPCell(tituloTabla1);
+			cell.setColspan(2);
+			cell.setBackgroundColor(new BaseColor(60, 59, 84));
+			table.addCell(cell);
+			
+			table.addCell(new Paragraph(new Chunk("Nombre:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
             table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionInstitucion(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-        else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-       	table.addCell(new Paragraph(new Chunk("2do Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionDependencia() != null)
+            
+            table.addCell(new Paragraph(new Chunk("2do Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionDependencia(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         table.addCell(new Paragraph(new Chunk("3er Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-         if(fichaTecnicaLaboratorio.getDescripcionSector() != null) 
+
+            table.addCell(new Paragraph(new Chunk("3er Nivel:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
             table.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionSector(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));  
-         else
-            table.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-         table.setSpacingBefore(5);
-         table.setSpacingAfter(5);
-    	   document.add(table);
- 	 		PdfPTable table2 = new PdfPTable(2);
+            table.setSpacingBefore(5);
+            table.setSpacingAfter(5);
+            document.add(table);
+ 	 		
+            PdfPTable table2 = new PdfPTable(2);
  	 		table2.setWidthPercentage(anchoTabla);
 			table2.setWidths(new int[]{2, 5});
-      	Paragraph tituloTabla2 = new Paragraph("");
-      	tituloTabla2.add(new Chunk("Datos generales del laboratorio", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
-         cell = new PdfPCell(tituloTabla2);
-       	cell.setColspan(2);
-       	cell.setBackgroundColor(new BaseColor(60, 59, 84));
+			Paragraph tituloTabla2 = new Paragraph("");
+			tituloTabla2.add(new Chunk("Datos generales del laboratorio", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+			cell = new PdfPCell(tituloTabla2);
+			cell.setColspan(2);
+			cell.setBackgroundColor(new BaseColor(60, 59, 84));
         	table2.addCell(cell);
+        	
         	table2.addCell(new Paragraph(new Chunk("Nombre:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getNombreLaboratorio(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Area:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionArea(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Disciplina:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-            if(fichaTecnicaLaboratorio.getDescripcionDisciplina() != null)
-        	    table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionDisciplina(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-            else
-                table2.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionDisciplina(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+            
         	table2.addCell(new Paragraph(new Chunk("Subdisciplina:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-            if(fichaTecnicaLaboratorio.getDescripcionSubdisciplina() != null)
-        	    table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionSubdisciplina(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
-            else
-                table2.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	table2.addCell(new Paragraph(new Chunk(fichaTecnicaLaboratorio.getDescripcionSubdisciplina(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+            
         	table2.addCell(new Paragraph(new Chunk("Calle y n煤mero:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getCalle(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Colonia:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getColonia(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	 
+        	
         	table2.addCell(new Paragraph(new Chunk("Municipio/Delegaci贸n:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getCiudad(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Estado:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getEstado(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("C贸digo Postal:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getCodigoPostal(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Latitud:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getLatitud().toString(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("Longitud:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
         	table2.addCell(new Paragraph(new Chunk(datoGeneral.getLongitud().toString(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));
+        	
         	table2.addCell(new Paragraph(new Chunk("P谩gina Web:", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));
-            if(datoGeneral.getPaginaWeb() != null)
-            	table2.addCell(new Paragraph(new Chunk(datoGeneral.getPaginaWeb(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	 
-            else
-                table2.addCell(new Paragraph(new Chunk("No disponible", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	
-        	table2.setSpacingBefore(5);
-         table2.setSpacingAfter(5);
+            table2.addCell(new Paragraph(new Chunk(datoGeneral.getPaginaWeb(), FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(87, 87, 87)))));	 
+            table2.setSpacingBefore(5);
+            table2.setSpacingAfter(5);
         	document.add(table2);  
         	
         	
-        // Inicia tabla de l抧eas de investigaci梟
-        PdfPTable tableLineasInv = new PdfPTable(2);
-        tableLineasInv.setWidthPercentage(anchoTabla);
-        Paragraph tituloTabla3 = new Paragraph("");
-        tituloTabla3.add(new Chunk("L铆neas de Investigaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
-        cell = new PdfPCell(tituloTabla3);	  	 	
-        cell.setColspan(3);
-        cell.setBackgroundColor(new BaseColor(60, 59, 84));       	
-        tableLineasInv.addCell(cell);
-        cell = new PdfPCell(new Paragraph(new Chunk("N煤mero", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
-        cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
-        tableLineasInv.addCell(cell);
-        cell = new PdfPCell(new Paragraph(new Chunk("Descripci贸n", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
-        cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
-        tableLineasInv.addCell(cell);
-        cell.setColspan(2);
-        Iterator lineasIterador = lineasLaboratorio.iterator();
+        	// Inicia tabla de l抧eas de investigaci梟
+        	PdfPTable tableLineasInv = new PdfPTable(2);
+        	tableLineasInv.setWidthPercentage(anchoTabla);
+        	Paragraph tableLineasTituloInv = new Paragraph("");
+        	tableLineasTituloInv.add(new Chunk("L铆neas de Investigaci贸n", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+        	cell = new PdfPCell(tableLineasTituloInv);	  	 	
+        	cell.setColspan(3);
+        	cell.setBackgroundColor(new BaseColor(60, 59, 84));       	
+        	tableLineasInv.addCell(cell);
+        	cell = new PdfPCell(new Paragraph(new Chunk("N煤mero", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
+        	cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        	tableLineasInv.addCell(cell);
+        	cell = new PdfPCell(new Paragraph(new Chunk("Descripci贸n", FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
+        	cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        	tableLineasInv.addCell(cell);
+        	cell.setColspan(2);
+        	Iterator lineasIterador = lineasLaboratorio.iterator();
         
-        int i = 1;
-        while (lineasIterador.hasNext()){
-            LineasLaboratorio lineaLab = (LineasLaboratorio) lineasIterador.next();
+        	int i = 1;
+        	while (lineasIterador.hasNext()){
+        		LineasLaboratorio lineaLab = (LineasLaboratorio) lineasIterador.next();
             
-            cell = new PdfPCell(new Paragraph(new Chunk("L铆nea "+i, FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
- 			cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
- 			tableLineasInv.addCell(cell);
+        		cell = new PdfPCell(new Paragraph(new Chunk("L铆nea "+i, FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
+        		cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        		tableLineasInv.addCell(cell);
 
-            cell = new PdfPCell(new Paragraph(new Chunk(lineaLab.getLinea(), FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
- 			cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
- 			tableLineasInv.addCell(cell);
- 			// actualiza indice para desplegar n渕ero de l抧ea siguiente
- 			i++;
-         }
+        		cell = new PdfPCell(new Paragraph(new Chunk(lineaLab.getLinea(), FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(87, 87, 87)))));	  	 	
+        		cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
+        		tableLineasInv.addCell(cell);
+        		// actualiza indice para desplegar n渕ero de l抧ea siguiente
+        		i++;
+        	}
         
-        tableLineasInv.setSpacingBefore(5);
-        tableLineasInv.setSpacingAfter(5); 
-        document.add(tableLineasInv);
-        // Termina tabla de l抧eas de investigaci梟	        	
+        	tableLineasInv.setSpacingBefore(5);
+        	tableLineasInv.setSpacingAfter(5); 
+        	document.add(tableLineasInv);
+        	// Termina tabla de l抧eas de investigaci梟	        	
         
         
  			//document.add(nuevalinea);        	 	
@@ -517,13 +507,13 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		 	PdfPTable table4 = new PdfPTable(4);
 		 	table4.setWidthPercentage(anchoTabla);
      		Paragraph tituloTabla4 = new Paragraph("");
-      	tituloTabla4.add(new Chunk("Acreditaciones/Certificaciones del laboratorio", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
-         cell = new PdfPCell(tituloTabla4);	  	 	
-       	cell.setColspan(4);
-         cell.setBackgroundColor(new BaseColor(60, 59, 84));       	
+     		tituloTabla4.add(new Chunk("Acreditaciones/Certificaciones del laboratorio", FontFactory.getFont(FontFactory.HELVETICA, Font.DEFAULTSIZE, Font.BOLD,new BaseColor(255, 255, 255))));
+     		cell = new PdfPCell(tituloTabla4);	  	 	
+     		cell.setColspan(4);
+     		cell.setBackgroundColor(new BaseColor(60, 59, 84));       	
         	table4.addCell(cell);
         	
-       	cell = new PdfPCell(new Paragraph(new Chunk("Acreditaciones/Certificaciones", FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
+        	cell = new PdfPCell(new Paragraph(new Chunk("Acreditaciones/Certificaciones", FontFactory.getFont(FontFactory.HELVETICA, 8, Font.BOLD,new BaseColor(117, 53, 153)))));	  	 	
  			cell.setHorizontalAlignment (Element.ALIGN_CENTER);       	
         	table4.addCell(cell);
 
