@@ -146,6 +146,9 @@ public class DescripcionLaboratorio {
 	}
 	
 	public String getDescripcionSector() {
+		if(descripcionSector == null) {
+			return "---";
+		}
 		return this.descripcionSector;
 	}
 	
@@ -174,6 +177,9 @@ public class DescripcionLaboratorio {
 	}
 
 	public String getDescripcionDependencia() {
+		if(descripcionDependencia == null) {
+			return "---";
+		}
 		return descripcionDependencia;
 	}
 

@@ -63,6 +63,9 @@ public class DatoGeneral {
 	}
 
 	public String getNombreDeContacto() {
+		if(this.nombreDeContacto == null) {
+			return "No Disponible";
+		}
 		return nombreDeContacto;
 	}
 
@@ -71,6 +74,9 @@ public class DatoGeneral {
 	}
 
 	public String getPuestoDeContacto() {
+		if(this.puestoDeContacto == null) {
+			return "No Disponible";
+		}
 		return puestoDeContacto;
 	}
 
@@ -79,6 +85,9 @@ public class DatoGeneral {
 	}
 
 	public String getEmail() {
+		if(this.email == null) {
+			return "No Proporcionado";
+		}
 		return email;
 	}
 
@@ -87,6 +96,9 @@ public class DatoGeneral {
 	}
 
 	public String getTelefonoDeContacto() {
+		if(this.telefonoDeContacto == null) {
+			return "No Proporcionado";
+		}
 		return telefonoDeContacto;
 	}
 

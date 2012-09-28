@@ -150,7 +150,10 @@ public class Actividad {
 	}
 	
 	public String getAnalisisYCaracterizacion() {
-		return analisisYCaracterizacion;
+		if(this.analisisYCaracterizacion == null) {
+			return "---";
+		}
+		return String.valueOf(analisisYCaracterizacion)+" %";
 	}
 	
 	public void setAnalisisYCaracterizacion(String analisisYCaracterizacion) {
@@ -158,7 +161,10 @@ public class Actividad {
 	}
 	
 	public String getInvestigacionAplicada() {
-		return investigacionAplicada;
+		if(this.investigacionAplicada == null) {
+			return "---";
+		}
+		return String.valueOf(investigacionAplicada)+" %";
 	}
 	
 	public void setInvestigacionAplicada(String investigacionAplicada) {
@@ -166,7 +172,10 @@ public class Actividad {
 	}
 	
 	public String getElaboracionPrototipo() {
-		return elaboracionPrototipo;
+		if(this.elaboracionPrototipo == null) {
+			return "---";
+		}
+		return String.valueOf(elaboracionPrototipo)+" %";
 	}
 	
 	public void setElaboracionPrototipo(String elaboracionPrototipo) {
@@ -174,7 +183,10 @@ public class Actividad {
 	}
 	
 	public String getDocenciaCapacitacion() {
-		return docenciaCapacitacion;
+		if(this.docenciaCapacitacion == null) {
+			return "---";
+		}
+		return String.valueOf(docenciaCapacitacion)+" %";
 	}
 	
 	public void setDocenciaCapacitacion(String docenciaCapacitacion) {
@@ -182,6 +194,9 @@ public class Actividad {
 	}
 	
 	public String getPruebasCualquierTipo() {
+		if(this.pruebasCualquierTipo == null) {
+			return "---";
+		}
 		return pruebasCualquierTipo;
 	}
 	
@@ -190,7 +205,10 @@ public class Actividad {
 	}
 	
 	public String getDesarrolloExperimental() {
-		return desarrolloExperimental;
+		if(this.desarrolloExperimental == null) {
+			return "---";
+		}
+		return  String.valueOf(this.desarrolloExperimental)+" %";
 	}
 	
 	public void setDesarrolloExperimental(String desarrolloExperimental) {
@@ -198,6 +216,9 @@ public class Actividad {
 	}
 	
 	public String getProduccionesEscalaPiloto() {
+		if(this.produccionesEscalaPiloto == null) {
+			return "---";
+		}
 		return produccionesEscalaPiloto;
 	}
 	
@@ -206,7 +227,10 @@ public class Actividad {
 	}
 	
 	public String getOtros() {
-		return otros;
+		if(this.otros == null) {
+			return "---";
+		}
+		return String.valueOf(this.otros)+" %";
 	}
 	
 	public void setOtros(String otros) {
@@ -214,6 +238,9 @@ public class Actividad {
 	}
 	
 	public String getOtrosEspecificados() {
+		if(this.otrosEspecificados == null) {
+			return "---";
+		}
 		return otrosEspecificados;
 	}
 	
@@ -222,7 +249,10 @@ public class Actividad {
 	}
 	
 	public String getInvestigacionCientificaBasica() {
-		return investigacionCientificaBasica;
+		if(this.investigacionCientificaBasica == null) {
+			return "---";
+		}
+		return String.valueOf(this.investigacionCientificaBasica)+" %";
 	}
 	
 	public void setInvestigacionCientificaBasica(
@@ -231,7 +261,10 @@ public class Actividad {
 	}
 	
 	public String getProduccionesAEscalaSemiComerciales() {
-		return produccionesAEscalaSemiComerciales;
+		if(this.produccionesAEscalaSemiComerciales == null) {
+			return "---";
+		}
+		return  String.valueOf(this.produccionesAEscalaSemiComerciales)+" %";
 	}
 	
 	public void setProduccionesAEscalaSemiComerciales(
@@ -240,7 +273,10 @@ public class Actividad {
 	}
 	
 	public String getDesarrolloProductosProcesosEquipos() {
-		return desarrolloProductosProcesosEquipos;
+		if(this.desarrolloProductosProcesosEquipos == null) {
+			return "---";
+		}
+		return  String.valueOf(this.desarrolloProductosProcesosEquipos)+" %";
 	}
 	
 	public void setDesarrolloProductosProcesosEquipos(
