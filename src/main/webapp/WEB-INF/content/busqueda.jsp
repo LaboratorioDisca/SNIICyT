@@ -19,7 +19,9 @@
 	</div>
 	<div class="search-form">
 		<s:form action="buscar">
-				
+			
+			<s:hidden name="equipoNombreFueDado" value="true"></s:hidden>
+			
 			<div class="text field nombre-de-equipo-fld">
 				<label><s:text name="busqueda.campo.equipo"/>:</label>
 				<s:textfield name="equipoNombre" /><br/>
@@ -52,10 +54,10 @@
 			<b><s:text name="busqueda.campos.seleccion.adicionales"/>:</b>
 			<div class="field column-selection">
 			
-				<input type="checkbox" name="desplegarEstado">
+				<input type="checkbox" checked="checked" name="desplegarEstado" class="checked-default">
 				<span><s:text name="busqueda.campo.estado"/></span>
 			
-				<input type="checkbox" name="desplegarDependencia">
+				<input type="checkbox" checked="checked" name="desplegarDependencia" class="checked-default">
 				<span><s:text name="busqueda.campo.dependencia"/></span>
 			
 				<input type="checkbox" name="desplegarSubdependencia">

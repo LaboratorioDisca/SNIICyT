@@ -86,7 +86,8 @@ public class ResultadosAction extends PartialAwareAction implements ParameterAwa
 		HashMap<String, String> parameterList = new HashMap<String, String>();
 		
         String equipoNombre = this.parameters.get("equipoNombre")[0];
-        setBusquedaConEquipo(!equipoNombre.isEmpty());
+        
+        setBusquedaConEquipo(Boolean.parseBoolean(this.parameters.get("equipoNombreFueDado")[0]));
         
         parameterList.put("equipoNombre", equipoNombre);
         if(parametroIncluidoYNoVacio("entidad"))

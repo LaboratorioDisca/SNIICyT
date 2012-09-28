@@ -129,6 +129,8 @@ $(document).ready(function() {
 	   $('#nombre-equipo-title').removeClass('hidden');
 	   $('#nombre-lab-toggle').removeClass('hidden');
 	   clearSelections();
+	   
+	   $('#buscar_equipoNombreFueDado').val(true);
    });
    
    $('#nombre-lab-toggle').live('click', function() {
@@ -138,6 +140,8 @@ $(document).ready(function() {
 	   $('#nombre-lab-title').removeClass('hidden');
 	   $('#nombre-equipo-toggle').removeClass('hidden');
 	   clearSelections();
+	   $('#buscar_equipoNombreFueDado').val(false);
+
    });
    
    var clearSelections = function() {
