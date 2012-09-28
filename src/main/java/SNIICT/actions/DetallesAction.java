@@ -81,6 +81,7 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 	 */
 	@Action("detallesEquipo")
 	public String dameDetallesEquipo() {
+		
 		this.setRenderPartial("detallesEquipo.jsp");
 		String equipoId = this.getParameters().get("equipoid")[0];
 
@@ -240,21 +241,22 @@ public class DetallesAction extends PartialAwareAction implements ParameterAware
 		
 		equiposLaboratorio = queryFichaEquipo.list();
 		
-		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM " + tableSpaceSif + "PS_ICT_LIN_INV_TBL WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
+		/*SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM "+ LineaLaboratorio.tableName +" WHERE ICT_ID_LABOR_FLD = " + laboratorioId +
 				" AND ICT_ID_SECTOR_FLD = '0" + sectorId + "' AND ICT_CVE_DEPEN_FLD = '" + dependencia + "' AND ICT_ID_INSTITU_FLD = '000" + institucionId + 
 				"' AND ICT_CVE_SECTOR_FLD = '0" + sectorClave + "'");
+		*/
 		
-		
-		queryLineaLaboratorio.addEntity(LineaLaboratorio.class);
 		// Descomentar el siguiente bloque de c—digo para conacyt (y comentar el del query anterior)
-		/* 
-		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM "+ LineasLaboratorio.tableName +" WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		
+		SQLQuery queryLineaLaboratorio = s.createSQLQuery("SELECT * FROM "+ LineaLaboratorio.tableName +" WHERE " + obligatorios+queryDependencia+queryInstitucion+queryClaveSector);
+		queryLineaLaboratorio.addEntity(LineaLaboratorio.class);
+
 		queryLineaLaboratorio.setString("laboratorioId", laboratorioId);
 		queryLineaLaboratorio.setString("sectorId", sectorId);
 		queryLineaLaboratorio.setString("institucionId", institucionId);
 		queryLineaLaboratorio.setString("claveSector", sectorClave);
 		queryLineaLaboratorio.setString("claveDependencia", dependencia);
-		*/
+		
 		lineasLaboratorio = queryLineaLaboratorio.list();
 		
 		SQLQuery queryAcreditacion = s.createSQLQuery("SELECT * FROM "+ Acreditacion.tableName +" WHERE ICT_ID_LABOR_FLD = :laboratorioId AND ICT_ID_INSTITU_FLD = :institucionId AND ICT_CVE_DEPEN_FLD IN (:dependenciaClave, NULL) AND ICT_CVE_SECTOR_FLD IN (:sectorClave, NULL)");

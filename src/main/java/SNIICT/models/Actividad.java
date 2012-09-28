@@ -76,42 +76,67 @@ public class Actividad {
 	public String getCapacidadesHabilidades() {
 		return capacidadesHabilidades;
 	}
+	
 	public void setCapacidadesHabilidades(String capacidadesHabilidades) {
 		this.capacidadesHabilidades = capacidadesHabilidades;
 	}
+	
 	public String getLineaInvUno() {
 		return lineaInvUno;
 	}
+	
 	public void setLineaInvUno(String lineaInvUno) {
 		this.lineaInvUno = lineaInvUno;
 	}
+	
 	public String getLineaInvDos() {
 		return lineaInvDos;
 	}
+	
 	public void setLineaInvDos(String lineaInvDos) {
 		this.lineaInvDos = lineaInvDos;
 	}
+	
 	public String getLineaInvTres() {
 		return lineaInvTres;
 	}
+	
 	public void setLineaInvTres(String lineaInvTres) {
 		this.lineaInvTres = lineaInvTres;
 	}
+	
 	public String getInversionTotal() {
-		return inversionTotal;
+		if(this.inversionTotal == null || this.inversionTotal.trim().isEmpty()) {
+			return "---";
+		} else {
+			return "$ " + String.valueOf(this.inversionTotal) + " MXN";
+		}
 	}
+	
 	public void setInversionTotal(String inversionTotal) {
 		this.inversionTotal = inversionTotal;
 	}
+	
 	public String getAreaEstimada() {
-		return areaEstimada;
+		if(this.areaEstimada == null || this.areaEstimada.trim().isEmpty()) {
+			return "--- ";
+		} else {
+			return String.valueOf(this.areaEstimada);
+		}
 	}
+	
 	public void setAreaEstimada(String areaEstimada) {
 		this.areaEstimada = areaEstimada;
 	}
+	
 	public String getCostoAnualMantenimiento() {
-		return costoAnualMantenimiento;
+		if(this.costoAnualMantenimiento == null || this.costoAnualMantenimiento.trim().isEmpty()) {
+			return "---";
+		} else {
+			return "$ " + String.valueOf(this.costoAnualMantenimiento) + " MXN";
+		}
 	}
+	
 	public void setCostoAnualMantenimiento(String costoAnualMantenimiento) {
 		this.costoAnualMantenimiento = costoAnualMantenimiento;
 	}
@@ -127,74 +152,97 @@ public class Actividad {
 	public String getAnalisisYCaracterizacion() {
 		return analisisYCaracterizacion;
 	}
+	
 	public void setAnalisisYCaracterizacion(String analisisYCaracterizacion) {
 		this.analisisYCaracterizacion = analisisYCaracterizacion;
 	}
+	
 	public String getInvestigacionAplicada() {
 		return investigacionAplicada;
 	}
+	
 	public void setInvestigacionAplicada(String investigacionAplicada) {
 		this.investigacionAplicada = investigacionAplicada;
 	}
+	
 	public String getElaboracionPrototipo() {
 		return elaboracionPrototipo;
 	}
+	
 	public void setElaboracionPrototipo(String elaboracionPrototipo) {
 		this.elaboracionPrototipo = elaboracionPrototipo;
 	}
+	
 	public String getDocenciaCapacitacion() {
 		return docenciaCapacitacion;
 	}
+	
 	public void setDocenciaCapacitacion(String docenciaCapacitacion) {
 		this.docenciaCapacitacion = docenciaCapacitacion;
 	}
+	
 	public String getPruebasCualquierTipo() {
 		return pruebasCualquierTipo;
 	}
+	
 	public void setPruebasCualquierTipo(String pruebasCualquierTipo) {
 		this.pruebasCualquierTipo = pruebasCualquierTipo;
 	}
+	
 	public String getDesarrolloExperimental() {
 		return desarrolloExperimental;
 	}
+	
 	public void setDesarrolloExperimental(String desarrolloExperimental) {
 		this.desarrolloExperimental = desarrolloExperimental;
 	}
+	
 	public String getProduccionesEscalaPiloto() {
 		return produccionesEscalaPiloto;
 	}
+	
 	public void setProduccionesEscalaPiloto(String produccionesEscalaPiloto) {
 		this.produccionesEscalaPiloto = produccionesEscalaPiloto;
 	}
+	
 	public String getOtros() {
 		return otros;
 	}
+	
 	public void setOtros(String otros) {
 		this.otros = otros;
 	}
+	
 	public String getOtrosEspecificados() {
 		return otrosEspecificados;
 	}
+	
 	public void setOtrosEspecificados(String otrosEspecificados) {
 		this.otrosEspecificados = otrosEspecificados;
 	}
+	
 	public String getInvestigacionCientificaBasica() {
 		return investigacionCientificaBasica;
 	}
+	
 	public void setInvestigacionCientificaBasica(
 			String investigacionCientificaBasica) {
 		this.investigacionCientificaBasica = investigacionCientificaBasica;
 	}
+	
 	public String getProduccionesAEscalaSemiComerciales() {
 		return produccionesAEscalaSemiComerciales;
 	}
+	
 	public void setProduccionesAEscalaSemiComerciales(
 			String produccionesAEscalaSemiComerciales) {
 		this.produccionesAEscalaSemiComerciales = produccionesAEscalaSemiComerciales;
 	}
+	
 	public String getDesarrolloProductosProcesosEquipos() {
 		return desarrolloProductosProcesosEquipos;
 	}
+	
 	public void setDesarrolloProductosProcesosEquipos(
 			String desarrolloProductosProcesosEquipos) {
 		this.desarrolloProductosProcesosEquipos = desarrolloProductosProcesosEquipos;

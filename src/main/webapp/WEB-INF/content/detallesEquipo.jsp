@@ -21,7 +21,7 @@
             <td><span class="respuesta"><s:property value="fichaTecnicaEquipo.nombreEquipo" /><br></span></td>
             <td><span class="respuesta"><s:property value="equipoLab.fichaTecnica" /><br></span></td>
             <td><span class="respuesta"><s:property value="equipoLab.anioDeAdquisicion" /><br></span></td>
-            <td style="vertical-align: top; width: 121px; text-align: center;"><span class="respuesta">$<s:property value="equipoLab.costoEstimado" /><br>
+            <td style="vertical-align: top; width: 121px; text-align: center;"><span class="respuesta"><s:property value="equipoLab.costoEstimado" /><br>
             </span></td>
           </tr>
         </tbody>

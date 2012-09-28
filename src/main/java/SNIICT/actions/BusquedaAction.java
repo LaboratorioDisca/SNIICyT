@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 
+import SNIICT.helpers.Fakers;
 import SNIICT.models.*;
 import SNIICT.utils.Hibernatable;
 
@@ -120,9 +121,10 @@ public class BusquedaAction extends PartialAwareAction implements ParameterAware
 		Session s = Hibernatable.getSession();
 		s.beginTransaction();
 		
-		List<Entidad> entidadesC = (List<Entidad>) s.createSQLQuery("SELECT * FROM PS_STATE_TBL WHERE COUNTRY = 'MEX'").
-		addEntity(Entidad.class).list();
-		entidades.addAll(entidadesC);
+//		List<Entidad> entidadesC = (List<Entidad>) s.createSQLQuery("SELECT * FROM PS_STATE_TBL WHERE COUNTRY = 'MEX'").
+//		addEntity(Entidad.class).list();
+//		entidades.addAll(entidadesC);
+		entidades.addAll(Fakers.estadosMexico());
 		
 		List<Sector> sectoresC = s.createCriteria(Sector.class).list();
 		sectores.addAll(sectoresC);

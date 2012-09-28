@@ -68,16 +68,24 @@ public class EquipoLaboratorio {
 		this.equipoId = equipoId;
 	}
 	
-	public Float getCostoEstimado() {
-		return this.costoEstimado;
+	public String getCostoEstimado() {
+		if(this.costoEstimado == null) {
+			return "---";
+		} else {
+			return "$ " + String.valueOf(this.costoEstimado) + " MXN";
+		}
 	}
 	
 	public void setCostoEstimado(Float costoEstimado) {
 		this.costoEstimado = costoEstimado;
 	}
 	
-	public Integer getAnioDeAdquisicion() {
-		return this.anioDeAdquisicion;
+	public String getAnioDeAdquisicion() {
+		if(this.anioDeAdquisicion == null) {
+			return "---";
+		} else {
+			return String.valueOf(this.anioDeAdquisicion);
+		}
 	}
 	
 	public void setAnioDeAdquisicion(Integer anioDeAdquisicion) {

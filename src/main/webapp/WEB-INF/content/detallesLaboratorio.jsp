@@ -147,7 +147,9 @@
         </tbody>
       </table>
       <br>
-      <table class="card centrado">
+
+	  
+	  <table class="card centrado">
         <tbody>
           <tr>
             <td class="titulo2 table-head" colspan="6" rowspan="1">
@@ -172,11 +174,11 @@
           </tr>
           <tr>
             <td><span class="pregunta1">Elaboración de prototipos:<br></span></td>
-            <td><span class="respuesta"><s:property value="actividad.elaboracionPrototipo" />%<br></span></td>
+            <td><span class="respuesta"><s:property value="%{actividad.elaboracionPrototipo || '---'}" />%<br></span></td>
             <td><span class="pregunta1">Producciones a escala piloto:<br></span></td>
-            <td><span class="respuesta"><s:property value="actividad.produccionesEscalaPiloto" />%<br></span></td>
+            <td><span class="respuesta"><s:property value="%{actividad.produccionesEscalaPiloto || '---'}" />%<br></span></td>
             <td><span class="pregunta1">Producciones a escala semi-comerciales:<br></span></td>
-            <td><span class="respuesta"><s:property value="actividad.produccionesAEscalaSemiComerciales" />%<br></span></td>
+            <td><span class="respuesta"><s:property value="%{actividad.produccionesAEscalaSemiComerciales || '---'}" />%<br></span></td>
           </tr>
           <tr>
             <td><span class="pregunta1">Docencia y capacitación:<br></span></td>
@@ -189,7 +191,6 @@
         </tbody>
       </table>
 	  <br/>
-	  
 	  <div class="card centrado vertical">
 	  	<div class="titulo2 head">Actividades</div>
 	  	
@@ -199,7 +200,7 @@
 	        <tbody>
 	          <tr>
 	            <td class="left"><span class="pregunta1">Inversión total estimada:<br></span></td>
-	            <td><span class="respuesta">$<s:property value="actividad.inversionTotal" /><br></span></td>
+	            <td><span class="respuesta"><s:property value="actividad.inversionTotal" /><br></span></td>
 	          </tr>
 	          <tr>
 	            <td class="left"><span class="pregunta1">Area estimada de laboratorio:<br></span></td>
@@ -207,7 +208,7 @@
 	          </tr>
 	          <tr>
 	            <td class="left"><span class="pregunta1">Costo anual de mantenimiento:<br></span></td>
-	            <td><span class="respuesta">$<s:property value="actividad.costoAnualMantenimiento" /><br></span></td>
+	            <td><span class="respuesta"><s:property value="actividad.costoAnualMantenimiento" /><br></span></td>
 	          </tr>
 	          <tr>
 	          </tr>
@@ -220,15 +221,15 @@
 
           <tr>
             <td class="titulo2 table-head" colspan="4" rowspan="1">Equipo principal<br></td>
-
           </tr>
-          <tr class="centered-text">
-
-            <th><span class="pregunta1">Nombre<br></span></th>
-
-            <th><span class="pregunta1">Detalles<br></span></th>
-
-          </tr>
+          
+          <s:if test="%{acreditaciones.size > 0}">
+          	<tr class="centered-text">
+            	<th><span class="pregunta1">Nombre<br></span></th>
+            	<th><span class="pregunta1">Detalles<br></span></th>
+          	</tr>
+          </s:if>
+          
           <s:iterator value="equiposLaboratorio">
 			<tr class="centered-text">
 	            <td>
@@ -271,24 +272,6 @@
           
         </tbody>
       </table>
-      
-      <table class="card centrado vertical">
-        <tbody>
-
-          <tr>
-            <td class="titulo2 table-head" colspan="4" rowspan="1">Líneas de Investigación<br></td>
-          </tr>
-          
-          <s:iterator status="stat" value="lineasLaboratorio">
-			<tr class="centered-text">
-				<td class="left"><span class="pregunta1">Linea <s:property value="#stat.index +1" />:<br></span></td>
-	            <td>
-	            	<span><s:property value="linea"/></span>
-	            </td>
-          	</tr>
-		  </s:iterator>
-        </tbody>
-      </table>
 	  
 	  <s:if test="%{fichaTecnicaLaboratorio.permiteServicio}">
 		<table class="card centrado">
@@ -317,6 +300,24 @@
 	      </table>
 	  </s:if>
       
+      <table class="card centrado vertical">
+        <tbody>
+		 
+		 <tr>
+           <td class="titulo2 table-head" colspan="4" rowspan="1">Líneas de Investigación<br></td>
+         </tr>
+          
+          
+          <s:iterator status="stat" value="lineasLaboratorio">
+			<tr class="centered-text">
+				<td class="left"><span class="pregunta1">Linea <s:property value="#stat.index +1" />:<br></span></td>
+	            <td>
+	            	<span><s:property value="linea"/></span>
+	            </td>
+          	</tr>
+		  </s:iterator>
+        </tbody>
+      </table>
       
       <table class="card centrado vertical">
         <tbody>
@@ -325,15 +326,17 @@
             <td class="titulo2 table-head" colspan="4" rowspan="1">Acreditaciones<br></td>
 
           </tr>
-          <tr class="centered-text">
+          
+          <s:if test="%{acreditaciones.size > 0}">
+          	<tr class="centered-text">
+            	<th><span class="pregunta1">Acreditaciones/Certificaciones<br></span></th>
 
-            <th><span class="pregunta1">Acreditaciones/Certificaciones<br></span></th>
-
-            <th><span class="pregunta1">Organismo que Otorga<br></span></th>
-            <th><span class="pregunta1">Fecha de Inicio<br></span></th>
-            <th><span class="pregunta1">Fecha de Término<br></span></th>
-
-          </tr>
+            	<th><span class="pregunta1">Organismo que Otorga<br></span></th>
+            	<th><span class="pregunta1">Fecha de Inicio<br></span></th>
+            	<th><span class="pregunta1">Fecha de Término<br></span></th>
+          	</tr>
+          </s:if>
+          
           <s:iterator value="acreditaciones">
 			<tr class="centered-text">
 	            <td>
