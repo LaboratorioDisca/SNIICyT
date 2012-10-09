@@ -88,7 +88,11 @@ public class DescripcionEquipo implements Serializable {
 		String mainQuery = "SELECT * FROM "+tableName+" ";
 
 		String equipoNombreQ = "ICT_DESC_FLD LIKE upper('%"+parametros.get("equipoNombre")+"%')";
-		String entidadQ = "ICT_ENT_FED_FLD = :entidadId ";
+		// En la vista los campos de entidadID y laboratorioID son incorrectos, han sido intercambiados
+		// Cadena correcta semanticamente: 
+		// String entidadQ = "ICT_ENT_FED_FLD = :entidadId ";
+		// Soluci—n mientras los campos en la vista no sean correctos:
+		String entidadQ = "ICT_NOM_LABOR_FLD = :entidadId ";
 		String sectorQ = "ICT_ID_SECTOR_FLD = :sectorId ";
 		String areaQ = "ICT_ID_AREA_FLD = :areaId ";
 		String servicioQ = "ICT_PER_SERV_FLD = :servicioDisp ";

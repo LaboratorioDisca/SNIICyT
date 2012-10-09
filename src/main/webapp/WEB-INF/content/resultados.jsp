@@ -13,7 +13,6 @@
 				<th>Equipo</th>
 				<th>Institución</th>
 				<th>Área de Conocimiento</th>
-				
 				<s:if test="%{debeMostrarEstado}">
 					<th>Estado</th>
 				</s:if>
@@ -102,12 +101,14 @@
 				<th>Institución</th>
 				<th>Área de Conocimiento</th>
 				
-				<s:if test="%{debeMostrarEstado}">
-					<th>Estado</th>
-				</s:if>
+				<!-- Orden de los siguientes dos campos intercambiado por
+				campos asociados en la vista de CONLAB cambiados -->
 				<s:if test="%{debeMostrarNombreDeLaboratorio}">
 					<th>Nombre del Laboratorio</th>
 				</s:if>	
+				<s:if test="%{debeMostrarEstado}">
+					<th>Estado</th>
+				</s:if>
 				<s:if test="%{debeMostrarDependencia}">
 					<th>Dependencia</th>
 				</s:if>
