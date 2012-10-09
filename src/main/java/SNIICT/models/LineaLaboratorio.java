@@ -20,7 +20,7 @@ import SNIICT.models.CategoriaEquipo;
 @Entity
 
 // 
-@Table(name="RODRIGO.PS_ICT_LIN_INV_TBL")
+@Table(name="SIF.PS_ICT_LIN_INV_TBL")
 // En CONACYT : 
 //@Table(name="SIF.PS_ICT_LIN_INV_TBL")
 public class LineaLaboratorio {
@@ -32,7 +32,7 @@ public class LineaLaboratorio {
 	@Column(name="ICT_LINEA1_FLD")
 	private String linea;
 
-	public static String tableName = "RODRIGO.PS_ICT_LIN_INV_TBL";
+	public static String tableName = "SIF.PS_ICT_LIN_INV_TBL";
 	
 	public Integer getLineaId() {
 		return lineaId;

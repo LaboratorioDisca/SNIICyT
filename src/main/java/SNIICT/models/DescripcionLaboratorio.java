@@ -14,10 +14,10 @@ import SNIICT.utils.Hibernatable;
 
 // SIF.PS_ICT_CONLAB_VW
 @Entity
-@Table(name="PS_ICT_CONLAB_VW")
+@Table(name="SIF.PS_ICT_CONLAB_VW")
 public class DescripcionLaboratorio {
 	
-	public static String tableName="PS_ICT_CONLAB_VW";
+	public static String tableName="SIF.PS_ICT_CONLAB_VW";
 	
 	@Id
 	@Column(name="ICT_NOM_LABOR_FLD")

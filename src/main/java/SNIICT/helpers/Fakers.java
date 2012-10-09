@@ -80,7 +80,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("EMEX");
-		estado.setDescripcion("ESTADO DE MÉXICO");
+		estado.setDescripcion("ESTADO DE M√âXICO");
 		lista.add(estado);
 
 		estado = new Entidad();
@@ -110,7 +110,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("MIC");
-		estado.setDescripcion("MICHOACÁN");
+		estado.setDescripcion("MICHOAC√ÅN");
 		lista.add(estado);
 
 		estado = new Entidad();
@@ -128,7 +128,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("NL");
-		estado.setDescripcion("NUEVO LEÓN");
+		estado.setDescripcion("NUEVO LE√ìN");
 		lista.add(estado);
 
 		estado = new Entidad();
@@ -146,7 +146,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("QRO");
-		estado.setDescripcion("QUERÉTARO");
+		estado.setDescripcion("QUER√âTARO");
 		lista.add(estado);
 
 		estado = new Entidad();
@@ -164,7 +164,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("SLP");
-		estado.setDescripcion("SAN LUIS POTOSÍ");
+		estado.setDescripcion("SAN LUIS POTOS√ç");
 		lista.add(estado);
 
 		estado = new Entidad();
@@ -200,7 +200,7 @@ public class Fakers {
 		estado = new Entidad();
 		estado.setPais("MEX");
 		estado.setEstado("YUC");
-		estado.setDescripcion("YUCATÁN");
+		estado.setDescripcion("YUCAT√ÅN");
 		lista.add(estado);
 
 		estado = new Entidad();

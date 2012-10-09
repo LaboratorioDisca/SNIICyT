@@ -15,12 +15,12 @@ import SNIICT.utils.Hibernatable;
 
 // SIF.PS_ICT_CONEQ_VW
 @Entity
-@Table(name="PS_ICT_CONEQ_VW")
+@Table(name="SIF.PS_ICT_CONEQ_VW")
 public class DescripcionEquipo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static String tableName="PS_ICT_CONEQ_VW";
+	public static String tableName="SIF.PS_ICT_CONEQ_VW";
 	
 	@Column(name="ICT_ID_LABOR_FLD") 
 	private Integer laboratorioId;

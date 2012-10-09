@@ -7,10 +7,10 @@ import javax.persistence.Table;
 
 // SIF.PS_ICT_ACTIVID_TBL
 @Entity
-@Table(name="PS_ICT_ACTIVID_TBL")
+@Table(name="SIF.PS_ICT_ACTIVID_TBL")
 public class Actividad {
 	
-	public static String tableName="PS_ICT_ACTIVID_TBL";
+	public static String tableName="SIF.PS_ICT_ACTIVID_TBL";
 	@Id
 	@Column(name="ICT_ID_LABOR_FLD")
 	private Integer laboratorioId;
